@@ -14,7 +14,7 @@ export async function Navbar() {
   const user = await getUser();
 
   //Fetch data from Redis
-  const cart: Cart | null = await redis.get(`cart-${user.id}`);
+  const cart: Cart | null = await redis.get(`cart-${user?.id}`);
 
   const total = cart?.items.reduce((sum, item) => sum + item.quantity, 0) || 0;
 
