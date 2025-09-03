@@ -16,7 +16,7 @@ async function getData(productId:string) {
 
 export default async function EditRoute({ 
     params
-}: { params: Promise<{ id: string }> }}){
+}: { params: Promise<{ id: string }> }){
     const data = await getData((await params).id);
     return (
        <EditForm data={data} />
