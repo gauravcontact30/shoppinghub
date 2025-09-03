@@ -29,8 +29,8 @@ async function getData(productId: string) {
   return data;
 }
 
-export default async function ProductIdRoute({ params }: { id: string }) {
-  const data = await getData(params.id);
+export default async function ProductIdRoute({ params }: { params: Promise<{ id: string }> }) {
+  const data = await getData((await params).id);
     const addProducttoShoppingCart = addItem.bind(null, data.id);
 
   return (
