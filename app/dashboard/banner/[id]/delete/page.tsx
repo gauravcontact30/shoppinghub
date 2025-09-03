@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 
-export default function DeleteBannerRoute({ params }: {params: {id: string }}) {
+export default async function DeleteBannerRoute({ params }: { params: Promise<{ id: string }> }) {
   return (
     <div className="h-[70vh] w-full flex items-center justify-center">
       <Card className="w-[400px]">
@@ -20,7 +20,7 @@ export default function DeleteBannerRoute({ params }: {params: {id: string }}) {
             <Link href="/dashboard/banner">Cancel</Link>
           </Button>
           <form action={deleteBanner}>
-            <input type="hidden" name="bannerId" value={params.id} />
+            <input type="hidden" name="bannerId" value={(await params).id} />
             <SubmitButton variant="destructive" text="Delete Product" />
           </form>
         </CardFooter>
